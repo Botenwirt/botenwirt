@@ -1,8 +1,8 @@
-"<!DOCTYPE html>
-<html lang=""de"">
+<!DOCTYPE html>
+<html lang="de">
 <head>
-    <meta charset=""UTF-8"">
-    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>~botenwirt~ - Restaurant Hinterthal</title>
     <style>
         * {
@@ -16,12 +16,13 @@
         }
 
         body {
-            font-family: Georgia, serif;
+            font-family: 'Georgia', serif;
             background-color: #ffffff;
             color: #2c2c2c;
             line-height: 1.6;
         }
 
+        /* Color Palette - Warm Brown Alpine Theme */
         :root {
             --primary-brown: #8B4513;
             --accent-brown: #D2691E;
@@ -68,7 +69,7 @@
         }
 
         .logo {
-            font-family: Calibri, sans-serif;
+            font-family: 'Calibri', sans-serif;
             font-size: 3rem;
             font-weight: bold;
             letter-spacing: 0.3em;
@@ -135,6 +136,13 @@
             height: fit-content;
         }
 
+        .opening-hours-section .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-brown);
+        }
+
         .section-title {
             font-size: 2rem;
             letter-spacing: 0.15em;
@@ -144,6 +152,21 @@
             border-bottom: 3px solid var(--primary-brown);
             font-style: italic;
             color: var(--black);
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table td {
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .hours-table td:first-child {
+            font-weight: bold;
+            width: 40%;
         }
 
         .closed-notice {
@@ -267,7 +290,7 @@
         }
 
         .legal-toggle::after {
-            content: ""▼"";
+            content: '▼';
             transition: transform 0.3s;
         }
 
@@ -301,11 +324,39 @@
             margin-top: 0;
         }
 
+        .legal-content h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-brown);
+        }
+
+        .legal-content p, .legal-content li {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .legal-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
         .info-box {
             background-color: var(--light-brown);
             padding: 1.5rem;
             border-left: 4px solid var(--primary-brown);
             margin: 1.5rem 0;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box strong {
+            display: inline-block;
+            min-width: 150px;
+            color: var(--dark-brown);
         }
 
         .footer {
@@ -320,6 +371,16 @@
             margin-bottom: 1.5rem;
             font-size: 0.9rem;
             line-height: 1.6;
+        }
+
+        .footer a {
+            color: var(--accent-brown);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            color: var(--light-brown);
         }
 
         .scroll-top {
@@ -370,406 +431,411 @@
     </style>
 </head>
 <body>
-    <div class=""language-switcher"">
-        <button onclick=""switchLanguage('de')"" class=""lang-btn active"" data-lang=""de"">DE</button>
-        <button onclick=""switchLanguage('en')"" class=""lang-btn"" data-lang=""en"">EN</button>
+    <div class="language-switcher">
+        <button onclick="switchLanguage('de')" class="lang-btn active" data-lang="de">DE</button>
+        <button onclick="switchLanguage('en')" class="lang-btn" data-lang="en">EN</button>
     </div>
 
-    <div class=""scroll-top"" onclick=""scrollToTop()"">↑</div>
+    <div class="scroll-top" onclick="scrollToTop()">↑</div>
 
-    <div class=""header"">
-        <div class=""logo"">~botenwirt~</div>
-        <div class=""contact-info"">
-            Urslaustrasse 29, 5761 Maria Alm / Hinterthal<br>
-            PHONE 0043 676 6308644 | MAIL: office.botenwirt@gmail.com
+    <div class="header">
+        <div class="logo">~botenwirt~</div>
+        <div class="contact-info">
+            Urslaustrasse 29 | 5761 Maria Alm / Hinterthal<br>
+            PHONE +43 676 6308644 | MAIL: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbf4fdfdf2f8fe95f9f4effef5ecf2e9effbfcf6faf2f795f8f4f6">[email&#160;protected]</a>
         </div>
-        <div class=""reservation-note"">Fri Dec 12 2025 00:00:00 GMT+0100 (Mitteleuropäische Normalzeit)</div>
+        <div class="reservation-note lang-de active">Wiedereröffnung: 12. Dezember 2025</div>
+        <div class="reservation-note lang-en">Reopening: December 12, 2025</div>
     </div>
 
-    <div class=""container"">
-        <div class=""top-section-grid"">
-            <div class=""info-section"">
-                <h3 class=""lang-de active"">📢 Aktuelle Infos</h3>
-                <h3 class=""lang-en"">📢 Current Info</h3>
-                <p class=""lang-de active"">Ab 12 Dezember sind wir wieder für euch da!</p>
-                <p class=""lang-en"">Season Opening December 12</p>
+    <div class="container">
+        <div class="top-section-grid">
+            <div class="info-section">
+                <h3 class="lang-de active">📢 Aktuelle Infos</h3>
+                <h3 class="lang-en">📢 Current Info</h3>
+                <p class="lang-de active">Wir öffnen wieder am 12. Dezember 2025!</p>
+                <p class="lang-en">We reopen on December 12, 2025!</p>
             </div>
 
-            <div class=""opening-hours-section"">
-                <h2 class=""section-title lang-de active"">ÖFFNUNGSZEITEN</h2>
-                <h2 class=""section-title lang-en"">OPENING HOURS</h2>
-                <div class=""closed-notice lang-de active"">
-                    Geschlossen<br>
-                    <small style=""font-size: 0.9rem; font-weight: normal;"">Wiedereröffnung: Fri Dec 12 2025 00:00:00 GMT+0100 (Mitteleuropäische Normalzeit)</small>
+            <div class="opening-hours-section">
+                <h2 class="section-title lang-de active">ÖFFNUNGSZEITEN</h2>
+                <h2 class="section-title lang-en">OPENING HOURS</h2>
+                
+                <div class="closed-notice lang-de active">
+                    Derzeit geschlossen<br>
+                    <small style="font-size: 0.9rem; font-weight: normal;">Wiedereröffnung: 12. Dezember 2025</small>
                 </div>
-                <div class=""closed-notice lang-en"">
+                <div class="closed-notice lang-en">
                     Currently closed<br>
-                    <small style=""font-size: 0.9rem; font-weight: normal;"">Reopening: December 12, 2025</small>
+                    <small style="font-size: 0.9rem; font-weight: normal;">Reopening: December 12, 2025</small>
                 </div>
             </div>
         </div>
 
-        <div class=""events-section"">
-            <h2 class=""section-title lang-de active"">VERANSTALTUNGEN & ANGEBOTE</h2>
-            <h2 class=""section-title lang-en"">EVENTS & SPECIALS</h2>
-            <div class=""events-grid"">
-                <div class=""event-box"">
-                    <h3 class=""lang-de active"">Unsere Events kommen bald!</h3>
-                    <h3 class=""lang-en"">Our events are coming soon</h3>
+        <div class="events-section">
+            <h2 class="section-title lang-de active">VERANSTALTUNGEN & ANGEBOTE</h2>
+            <h2 class="section-title lang-en">EVENTS & SPECIALS</h2>
+            
+            <div class="events-grid">
+                <div class="event-box">
+                    <h3 class="lang-de active">Unsere Events kommen bald!</h3>
+                    <h3 class="lang-en">Our events coming soon!</h3>
                 </div>
             </div>
         </div>
 
-        <div class=""menu-section"">
-            <h2 class=""section-title lang-de active"">VORSPEISEN</h2>
-            <h2 class=""section-title lang-en"">APPETIZERS</h2>
-            <div class=""menu-grid"">
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">BEEF TATAR</div>
-                    <div class=""menu-item-name lang-en"">BEEF TARTARE</div>
-                    <div class=""menu-item-description lang-de active"">Fein Garniert Toast & Butter</div>
-                    <div class=""menu-item-description lang-en"">Finely garnished toast & butter</div>
-                    <div class=""inline-prices"">Klein €18 | Groß €23</div>
+        <!-- SPEISEKARTE -->
+        <div class="menu-section">
+            <h2 class="section-title lang-de active">VORSPEISEN</h2>
+            <h2 class="section-title lang-en">APPETIZERS</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">BEEF TATAR</div>
+                    <div class="menu-item-name lang-en">BEEF TARTARE</div>
+                    <div class="menu-item-description lang-de active">Fein Garniert, Toast & Butter</div>
+                    <div class="menu-item-description lang-en">Finely garnished, toast & butter</div>
+                    <div class="inline-prices">Klein €18 | Groß €23</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">GEBACKENER CAMEMBERT <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">BAKED CAMEMBERT <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Rote Rübe Apfel Nüsse</div>
-                    <div class=""menu-item-description lang-en"">Red beet apple nuts</div>
-                    <div class=""inline-prices"">Klein €16 | Groß €21</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">GEBACKENER CAMEMBERT <span class="icon">🥬</span></div>
+                    <div class="menu-item-name lang-en">BAKED CAMEMBERT <span class="icon">🥬</span></div>
+                    <div class="menu-item-description lang-de active">Rote Rübe, Apfel, Nüsse</div>
+                    <div class="menu-item-description lang-en">Red beet, apple, nuts</div>
+                    <div class="inline-prices">Klein €16 | Groß €21</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">UDON NUDEL MIT ROHEM TUNA</div>
-                    <div class=""menu-item-name lang-en"">UDON NOODLES WITH RAW TUNA</div>
-                    <div class=""menu-item-description lang-de active"">Gurke Tomate Radi Sesam Ponzu-Soja Sauce</div>
-                    <div class=""menu-item-description lang-en"">Cucumber tomato radish sesame ponzu soy sauce</div>
-                    <div class=""inline-prices"">Klein €18 | Groß €23</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">UDON NUDEL MIT ROHEM TUNA</div>
+                    <div class="menu-item-name lang-en">UDON NOODLES WITH RAW TUNA</div>
+                    <div class="menu-item-description lang-de active">Gurke, Tomate, Radi, Sesam, Ponzu-Soja Sauce</div>
+                    <div class="menu-item-description lang-en">Cucumber, tomato, radish, sesame, ponzu soy sauce</div>
+                    <div class="inline-prices">Klein €18 | Groß €23</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">KRÄFTIGE RINDSUPPE</div>
-                    <div class=""menu-item-name lang-en"">HEARTY BEEF SOUP</div>
-                    <div class=""menu-item-description lang-de active"">Karotten & Suppengrün</div>
-                    <div class=""menu-item-description lang-en"">Carrots & soup vegetables</div>
-                </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">RINDSUPPE MIT FRITTATEN</div>
-                    <div class=""menu-item-name lang-en"">BEEF SOUP WITH FRITTATEN</div>
-                    <div class=""menu-item-description lang-de active"">Karotten & Suppengrün mit Frittaten</div>
-                    <div class=""menu-item-description lang-en"">Carrots & soup vegetables with frittaten</div>
-                    <div class=""menu-item-price"">€ 6</div>
-                </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">RINDSUPPE MIT KASPRESSKNÖDEL</div>
-                    <div class=""menu-item-name lang-en"">BEEF SOUP WITH CHEESE DUMPLINGS</div>
-                    <div class=""menu-item-description lang-de active"">Karotten & Suppengrün mit Kaspressknödel</div>
-                    <div class=""menu-item-description lang-en"">Carrots & soup vegetables with cheese dumplings</div>
-                    <div class=""menu-item-price"">€ 8</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">KRÄFTIGE RINDSUPPE</div>
+                    <div class="menu-item-name lang-en">HEARTY BEEF SOUP</div>
+                    <div class="menu-item-description lang-de active">Karotten & Suppengrün</div>
+                    <div class="menu-item-description lang-en">Carrots & soup vegetables</div>
+                    <div class="inline-prices lang-de active">mit Frittaten €6 | mit Kaspressknödel €8</div>
+                    <div class="inline-prices lang-en">with Frittaten €6 | with cheese dumplings €8</div>
                 </div>
             </div>
         </div>
 
-        <div class=""menu-section"">
-            <h2 class=""section-title lang-de active"">HAUPTSPEISEN</h2>
-            <h2 class=""section-title lang-en"">MAIN COURSES</h2>
-            <div class=""menu-grid"">
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">WIENER SCHNITZEL VOM SCHWEIN</div>
-                    <div class=""menu-item-name lang-en"">WIENER SCHNITZEL (PORK)</div>
-                    <div class=""menu-item-description lang-de active"">Kartoffelsalat oder Pommes Preiselbeeren</div>
-                    <div class=""menu-item-description lang-en"">Potato salad or fries cranberries</div>
-                    <div class=""menu-item-price"">€ 19</div>
+        <div class="menu-section">
+            <h2 class="section-title lang-de active">HAUPTSPEISEN</h2>
+            <h2 class="section-title lang-en">MAIN COURSES</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">WIENER SCHNITZEL VOM SCHWEIN</div>
+                    <div class="menu-item-name lang-en">WIENER SCHNITZEL (PORK)</div>
+                    <div class="menu-item-description lang-de active">Kartoffelsalat oder Pommes, Preiselbeeren</div>
+                    <div class="menu-item-description lang-en">Potato salad or fries, cranberries</div>
+                    <div class="menu-item-price">€ 19</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">GEGRILLTE HIRSCH KÄSEKRAINER</div>
-                    <div class=""menu-item-name lang-en"">GRILLED VENISON CHEESE SAUSAGE</div>
-                    <div class=""menu-item-description lang-de active"">Gurke Senf Kren Pommes mit Kräutermayo & Röstzwiebel</div>
-                    <div class=""menu-item-description lang-en"">Cucumber mustard horseradish fries with herb mayo & fried onions</div>
-                    <div class=""menu-item-price"">€ 19</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">GEGRILLTE HIRSCH KÄSEKRAINER</div>
+                    <div class="menu-item-name lang-en">GRILLED VENISON CHEESE SAUSAGE</div>
+                    <div class="menu-item-description lang-de active">Gurke, Senf, Kren, Pommes mit Kräutermayo & Röstzwiebel</div>
+                    <div class="menu-item-description lang-en">Cucumber, mustard, horseradish, fries with herb mayo & fried onions</div>
+                    <div class="menu-item-price">€ 19</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">HÜHNERBRUST ALLA ROMANA</div>
-                    <div class=""menu-item-name lang-en"">CHICKEN BREAST ALLA ROMANA</div>
-                    <div class=""menu-item-description lang-de active"">Tomatenragout Oliven cremige Parmesan-Polenta</div>
-                    <div class=""menu-item-description lang-en"">Tomato ragout olives creamy parmesan polenta</div>
-                    <div class=""menu-item-price"">€ 23</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">HÜHNERBRUST ALLA ROMANA</div>
+                    <div class="menu-item-name lang-en">CHICKEN BREAST ALLA ROMANA</div>
+                    <div class="menu-item-description lang-de active">Tomatenragout, Oliven, cremige Parmesan-Polenta</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, olives, creamy parmesan polenta</div>
+                    <div class="menu-item-price">€ 23</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">ZWIEBELROSTBRATEN BTW STYLE</div>
-                    <div class=""menu-item-name lang-en"">ONION ROAST BEEF BTW STYLE</div>
-                    <div class=""menu-item-description lang-de active"">gebratene grüne Bohnen Butter Nockerl</div>
-                    <div class=""menu-item-description lang-en"">Fried green beans butter dumplings</div>
-                    <div class=""menu-item-price"">€ 31</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">ZWIEBELROSTBRATEN "BTW STYLE"</div>
+                    <div class="menu-item-name lang-en">ONION ROAST BEEF "BTW STYLE"</div>
+                    <div class="menu-item-description lang-de active">gebratene grüne Bohnen, Butter Nockerl</div>
+                    <div class="menu-item-description lang-en">Fried green beans, butter dumplings</div>
+                    <div class="menu-item-price">€ 31</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">PILZGESCHNETZELTES MIT PASTA <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">MUSHROOM RAGOUT WITH PASTA <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Nüsse Pesto Parmesan</div>
-                    <div class=""menu-item-description lang-en"">Nuts pesto parmesan</div>
-                    <div class=""menu-item-price"">€ 18</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">PILZGESCHNETZELTES MIT PASTA <span class="icon">🥬</span></div>
+                    <div class="menu-item-name lang-en">MUSHROOM RAGOUT WITH PASTA <span class="icon">🥬</span></div>
+                    <div class="menu-item-description lang-de active">Nüsse, Pesto, Parmesan</div>
+                    <div class="menu-item-description lang-en">Nuts, pesto, parmesan</div>
+                    <div class="menu-item-price">€ 18</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">PINZGAUER KASNOCKEN <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">PINZGAU CHEESE DUMPLINGS <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Röstzwiebel gehackte Kräuter Salat</div>
-                    <div class=""menu-item-description lang-en"">Fried onions chopped herbs salad</div>
-                    <div class=""menu-item-price"">€ 18</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">PINZGAUER KASNOCKEN <span class="icon">🥬</span></div>
+                    <div class="menu-item-name lang-en">PINZGAU CHEESE DUMPLINGS <span class="icon">🥬</span></div>
+                    <div class="menu-item-description lang-de active">Röstzwiebel, gehackte Kräuter, Salat</div>
+                    <div class="menu-item-description lang-en">Fried onions, chopped herbs, salad</div>
+                    <div class="menu-item-price">€ 18</div>
                 </div>
             </div>
         </div>
 
-        <div class=""menu-section"">
-            <h2 class=""section-title lang-de active"">SALAT BOWLS</h2>
-            <h2 class=""section-title lang-en"">SALAD BOWLS</h2>
-            <div class=""menu-grid"">
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">BACKHENDEL-SALAT</div>
-                    <div class=""menu-item-name lang-en"">FRIED CHICKEN SALAD</div>
-                    <div class=""menu-item-description lang-de active"">Blattsalat Rohkost Preiselbeer Dressing</div>
-                    <div class=""menu-item-description lang-en"">Leaf salad raw vegetables cranberry dressing</div>
-                    <div class=""menu-item-price"">€ 21</div>
+        <div class="menu-section">
+            <h2 class="section-title">SALAT BOWLS</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">BACKHENDEL-SALAT</div>
+                    <div class="menu-item-name lang-en">FRIED CHICKEN SALAD</div>
+                    <div class="menu-item-description lang-de active">Blattsalat, Rohkost, Preiselbeer Dressing</div>
+                    <div class="menu-item-description lang-en">Leaf salad, raw vegetables, cranberry dressing</div>
+                    <div class="menu-item-price">€ 21</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">KASPRESSKNÖDEL-SALAT <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">CHEESE DUMPLING SALAD <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Blattsalat Rohkost Kräuter Mayo Dressing</div>
-                    <div class=""menu-item-description lang-en"">Leaf salad raw vegetables herb mayo dressing</div>
-                    <div class=""menu-item-price"">€ 18</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">KASPRESSKNÖDEL-SALAT <span class="icon">🥬</span></div>
+                    <div class="menu-item-name lang-en">CHEESE DUMPLING SALAD <span class="icon">🥬</span></div>
+                    <div class="menu-item-description lang-de active">Blattsalat, Rohkost, Kräuter Mayo, Dressing</div>
+                    <div class="menu-item-description lang-en">Leaf salad, raw vegetables, herb mayo, dressing</div>
+                    <div class="menu-item-price">€ 18</div>
                 </div>
             </div>
         </div>
 
-        <div class=""menu-section"">
-            <h2 class=""section-title lang-de active"">PIZZA CLASSIC</h2>
-            <h2 class=""section-title lang-en"">PIZZA CLASSIC</h2>
-            <div class=""menu-grid"">
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">MARGHERITA <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">MARGHERITA <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Tomatenragout Mozzarella Oregano</div>
-                    <div class=""menu-item-description lang-en"">Tomato ragout mozzarella oregano</div>
-                    <div class=""menu-item-price"">€ 12</div>
+        <div class="menu-section">
+            <h2 class="section-title">PIZZA CLASSIC</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-name">MARGHERITA <span class="icon">🥬</span></div>
+                    <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Oregano</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, oregano</div>
+                    <div class="menu-item-price">€ 12</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">PIZZA SALAMI</div>
-                    <div class=""menu-item-name lang-en"">PIZZA SALAMI</div>
-                    <div class=""menu-item-description lang-de active"">Tomatenragout Mozzarella Italienische Salami Oregano</div>
-                    <div class=""menu-item-description lang-en"">Tomato ragout mozzarella italian salami oregano</div>
-                    <div class=""menu-item-price"">€ 15</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name">PIZZA SALAMI</div>
+                    <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Italienische Salami, Oregano</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, italian salami, oregano</div>
+                    <div class="menu-item-price">€ 15</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">PIZZA SCHINKEN</div>
-                    <div class=""menu-item-name lang-en"">PIZZA HAM</div>
-                    <div class=""menu-item-description lang-de active"">Tomatenragout Mozzarella gekochter Schinken Oregano</div>
-                    <div class=""menu-item-description lang-en"">Tomato ragout mozzarella cooked ham oregano</div>
-                    <div class=""menu-item-price"">€ 15</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">PIZZA SCHINKEN</div>
+                    <div class="menu-item-name lang-en">PIZZA HAM</div>
+                    <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, gekochter Schinken, Oregano</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, cooked ham, oregano</div>
+                    <div class="menu-item-price">€ 15</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">PIZZA FUNGHI <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">PIZZA FUNGHI <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Tomatenragout Mozzarella Champignon Knoblauch Oregano</div>
-                    <div class=""menu-item-description lang-en"">Tomato ragout mozzarella mushroom garlic oregano</div>
-                    <div class=""menu-item-price"">€ 15</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name">PIZZA FUNGHI <span class="icon">🥬</span></div>
+                    <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Champignon, Knoblauch, Oregano</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, mushroom, garlic, oregano</div>
+                    <div class="menu-item-price">€ 15</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">PIZZA DIAVOLO</div>
-                    <div class=""menu-item-name lang-en"">PIZZA DIAVOLO</div>
-                    <div class=""menu-item-description lang-de active"">Tomatenragout Mozzarella Italienische Salami scharfe Pfefferoni Oregano</div>
-                    <div class=""menu-item-description lang-en"">Tomato ragout mozzarella italian salami hot pepperoni oregano</div>
-                    <div class=""menu-item-price"">€ 16</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name">PIZZA DIAVOLO</div>
+                    <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Italienische Salami, scharfe Pfefferoni, Oregano</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, italian salami, hot pepperoni, oregano</div>
+                    <div class="menu-item-price">€ 16</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">PIZZA TONNO</div>
-                    <div class=""menu-item-name lang-en"">PIZZA TUNA</div>
-                    <div class=""menu-item-description lang-de active"">Tomatenragout Mozzarella Tonno Zwiebel Oliven Knoblauch Oregano</div>
-                    <div class=""menu-item-description lang-en"">Tomato ragout mozzarella tuna onion olives garlic oregano</div>
-                    <div class=""menu-item-price"">€ 17</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name">PIZZA TONNO</div>
+                    <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Tonno, Zwiebel, Oliven, Knoblauch, Oregano</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, tuna, onion, olives, garlic, oregano</div>
+                    <div class="menu-item-price">€ 17</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">PIZZA HAWAII</div>
-                    <div class=""menu-item-name lang-en"">PIZZA HAWAII</div>
-                    <div class=""menu-item-description lang-de active"">Tomatenragout Mozzarella gekochter Schinken Ananas Oregano</div>
-                    <div class=""menu-item-description lang-en"">Tomato ragout mozzarella cooked ham pineapple oregano</div>
-                    <div class=""menu-item-price"">€ 16</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name">PIZZA HAWAII</div>
+                    <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, gekochter Schinken, Ananas, Oregano</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, cooked ham, pineapple, oregano</div>
+                    <div class="menu-item-price">€ 16</div>
                 </div>
             </div>
         </div>
 
-        <div class=""menu-section"">
-            <h2 class=""section-title lang-de active"">PIZZA SPEZIALE</h2>
-            <h2 class=""section-title lang-en"">PIZZA SPEZIALE</h2>
-            <div class=""menu-grid"">
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">HAUS-PIZZA</div>
-                    <div class=""menu-item-name lang-en"">HOUSE PIZZA</div>
-                    <div class=""menu-item-description lang-de active"">Tomatenragout Mozzarella Salami Schinken Champignon Rucola Balsamico Glace Parmesan</div>
-                    <div class=""menu-item-description lang-en"">Tomato ragout mozzarella salami ham mushroom arugula balsamic glaze parmesan</div>
-                    <div class=""menu-item-price"">€ 17</div>
+        <div class="menu-section">
+            <h2 class="section-title">PIZZA SPEZIALE</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">HAUS-PIZZA</div>
+                    <div class="menu-item-name lang-en">HOUSE PIZZA</div>
+                    <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Salami, Schinken, Champignon, Rucola, Balsamico Glace, Parmesan</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, salami, ham, mushroom, arugula, balsamic glaze, parmesan</div>
+                    <div class="menu-item-price">€ 17</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">PIZZA TONY CALZONE</div>
-                    <div class=""menu-item-name lang-en"">PIZZA TONY CALZONE</div>
-                    <div class=""menu-item-description lang-de active"">Tomatenragout Mozzarella Schinken Tonno Zwiebel Knoblauch Champignon</div>
-                    <div class=""menu-item-description lang-en"">Tomato ragout mozzarella ham tuna onion garlic mushroom</div>
-                    <div class=""menu-item-price"">€ 17</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name">PIZZA "TONY" CALZONE</div>
+                    <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Schinken, Tonno, Zwiebel, Knoblauch, Champignon</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, ham, tuna, onion, garlic, mushroom</div>
+                    <div class="menu-item-price">€ 17</div>
                 </div>
             </div>
         </div>
 
-        <div class=""menu-section"">
-            <h2 class=""section-title lang-de active"">EXTRAS</h2>
-            <h2 class=""section-title lang-en"">EXTRAS</h2>
-            <div class=""menu-grid"">
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">PORTION POMMES <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">PORTION FRIES <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Pommes</div>
-                    <div class=""menu-item-description lang-en"">Fries</div>
-                    <div class=""menu-item-price"">€ 7</div>
+        <div class="menu-section">
+            <h2 class="section-title">EXTRAS</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">PORTION POMMES <span class="icon">🥬</span></div>
+                    <div class="menu-item-name lang-en">PORTION FRIES <span class="icon">🥬</span></div>
+                    <div class="menu-item-price">€ 7</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">POMMES MIT KRÄUTER MAYO <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">FRIES WITH HERB MAYO <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Pommes mit Kräutermayo</div>
-                    <div class=""menu-item-description lang-en"">Fries with herb mayo</div>
-                    <div class=""menu-item-price"">€ 8</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">POMMES MIT KRÄUTER MAYO <span class="icon">🥬</span></div>
+                    <div class="menu-item-name lang-en">FRIES WITH HERB MAYO <span class="icon">🥬</span></div>
+                    <div class="menu-item-price">€ 8</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">TRÜFFELPOMMES MIT PARMESAN <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">TRUFFLE FRIES WITH PARMESAN <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Trüffelpommes mit Parmesan</div>
-                    <div class=""menu-item-description lang-en"">Truffle fries with parmesan</div>
-                    <div class=""menu-item-price"">€ 10</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">TRÜFFELPOMMES MIT PARMESAN <span class="icon">🥬</span></div>
+                    <div class="menu-item-name lang-en">TRUFFLE FRIES WITH PARMESAN <span class="icon">🥬</span></div>
+                    <div class="menu-item-price">€ 10</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">GEBRATENE GRÜNE BOHNEN <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">FRIED GREEN BEANS <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Gebratene grüne Bohnen</div>
-                    <div class=""menu-item-description lang-en"">Fried green beans</div>
-                    <div class=""menu-item-price"">€ 5</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">GEBRATENE GRÜNE BOHNEN <span class="icon">🥬</span></div>
+                    <div class="menu-item-name lang-en">FRIED GREEN BEANS <span class="icon">🥬</span></div>
+                    <div class="menu-item-price">€ 5</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">GEMISCHTER SALAT <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">MIXED SALAD <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Blattsalate Rohkost Hausdressing</div>
-                    <div class=""menu-item-description lang-en"">Leaf salads raw vegetables house dressing</div>
-                    <div class=""menu-item-price"">€ 7</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">GEMISCHTER SALAT <span class="icon">🥬</span></div>
+                    <div class="menu-item-name lang-en">MIXED SALAD <span class="icon">🥬</span></div>
+                    <div class="menu-item-description lang-de active">Blattsalate, Rohkost, Hausdressing</div>
+                    <div class="menu-item-description lang-en">Leaf salads, raw vegetables, house dressing</div>
+                    <div class="menu-item-price">€ 7</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">TOMATENSALAT & RUCOLA <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">TOMATO SALAD & ARUGULA <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Balsamico Glace Zwiebel</div>
-                    <div class=""menu-item-description lang-en"">Balsamic glaze onion</div>
-                    <div class=""menu-item-price"">€ 7</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">TOMATENSALAT & RUCOLA <span class="icon">🥬</span></div>
+                    <div class="menu-item-name lang-en">TOMATO SALAD & ARUGULA <span class="icon">🥬</span></div>
+                    <div class="menu-item-description lang-de active">Balsamico Glace, Zwiebel</div>
+                    <div class="menu-item-description lang-en">Balsamic glaze, onion</div>
+                    <div class="menu-item-price">€ 7</div>
                 </div>
             </div>
         </div>
 
-        <div class=""menu-section"">
-            <h2 class=""section-title lang-de active"">DESSERTS</h2>
-            <h2 class=""section-title lang-en"">DESSERTS</h2>
-            <div class=""menu-grid"">
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">APFELSTRUDEL <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">APPLE STRUDEL <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">mit Mini Magnum Schlag</div>
-                    <div class=""menu-item-description lang-en"">with mini magnum whipped cream</div>
-                    <div class=""menu-item-price"">€ 9</div>
+        <div class="menu-section">
+            <h2 class="section-title">DESSERTS</h2>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">APFELSTRUDEL</div>
+                    <div class="menu-item-name lang-en">APPLE STRUDEL</div>
+                    <div class="menu-item-description">mit Mini Magnum, Schlag</div>
+                    <div class="menu-item-price">€ 9</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">VANILLEEIS MIT WALDBEERGELEE <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">VANILLA ICE CREAM WITH BERRY JELLY <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">Keks-Crumble Schlag</div>
-                    <div class=""menu-item-description lang-en"">Cookie crumble whipped cream</div>
-                    <div class=""menu-item-price"">€ 7</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name lang-de active">VANILLEEIS MIT WALDBEERGELEE</div>
+                    <div class="menu-item-name lang-en">VANILLA ICE CREAM WITH BERRY JELLY</div>
+                    <div class="menu-item-description lang-de active">Keks-Crumble, Schlag</div>
+                    <div class="menu-item-description lang-en">Cookie crumble, whipped cream</div>
+                    <div class="menu-item-price">€ 7</div>
                 </div>
-                <div class=""menu-item"">
-                    <div class=""menu-item-name lang-de active"">HINTERTHALER CHURROS <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-name lang-en"">HINTERTHALER CHURROS <span class=""icon"">🥬</span></div>
-                    <div class=""menu-item-description lang-de active"">mit Vanilleeis Waldbeergelee</div>
-                    <div class=""menu-item-description lang-en"">with vanilla ice cream berry jelly</div>
-                    <div class=""menu-item-price"">€ 9</div>
+
+                <div class="menu-item">
+                    <div class="menu-item-name">HINTERTHALER CHURROS</div>
+                    <div class="menu-item-description lang-de active">mit Vanilleeis, Waldbeergelee</div>
+                    <div class="menu-item-description lang-en">with vanilla ice cream, berry jelly</div>
+                    <div class="menu-item-price">€ 9</div>
                 </div>
             </div>
         </div>
 
-        <div class=""legal-section"">
-            <button class=""legal-toggle"" onclick=""toggleLegal('impressum')"">
-                <span class=""lang-de active"">📋 Impressum</span>
-                <span class=""lang-en"">📋 Legal Notice</span>
+        <!-- LEGAL SECTIONS -->
+        <div class="legal-section">
+            <button class="legal-toggle" onclick="toggleLegal('impressum')">
+                <span class="lang-de active">📋 Impressum</span>
+                <span class="lang-en">📋 Legal Notice</span>
             </button>
-            <div id=""impressum"" class=""legal-content"">
-                <h2 class=""lang-de active"">Impressum</h2>
-                <h2 class=""lang-en"">Legal Notice</h2>
-                <div class=""info-box"">
+            <div id="impressum" class="legal-content">
+                <h2 class="lang-de active">Impressum</h2>
+                <h2 class="lang-en">Legal Notice</h2>
+                
+                <div class="info-box">
                     <p><strong>Botenwirt</strong><br>
                     Oliver Sprenger<br>
-                    Urslaustrasse 29, 5761 Maria Alm / Hinterthal<br>
+                    Urslaustrasse 29<br>
+                    5761 Maria Alm / Hinterthal<br>
                     Österreich</p>
-                    <p><strong class=""lang-de active"">Telefon:</strong><strong class=""lang-en"">Phone:</strong> 0043 676 6308644<br>
-                    <strong>E-Mail:</strong> office.botenwirt@gmail.com<br>
-                    <strong>UID:</strong> B6: ATU76115213</p>
+                    <p><strong class="lang-de active">Telefon:</strong><strong class="lang-en">Phone:</strong> +43 676 6308644<br>
+                    <strong>E-Mail:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1d727b7b747e78337f726978736a746f695d7a707c7471337e7270">[email&#160;protected]</a><br>
+                    <strong>UID:</strong> ATU76115213</p>
                 </div>
             </div>
 
-            <button class=""legal-toggle"" onclick=""toggleLegal('datenschutz')"">
-                <span class=""lang-de active"">🔒 Datenschutzerklärung</span>
-                <span class=""lang-en"">🔒 Privacy Policy</span>
+            <button class="legal-toggle" onclick="toggleLegal('datenschutz')">
+                <span class="lang-de active">🔒 Datenschutzerklärung</span>
+                <span class="lang-en">🔒 Privacy Policy</span>
             </button>
-            <div id=""datenschutz"" class=""legal-content"">
-                <h2 class=""lang-de active"">Datenschutzerklärung</h2>
-                <h2 class=""lang-en"">Privacy Policy</h2>
-                <div class=""info-box"">
-                    <p class=""lang-de active"">Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst.</p>
-                    <p class=""lang-en"">We take the protection of your personal data very seriously.</p>
+            <div id="datenschutz" class="legal-content">
+                <h2 class="lang-de active">Datenschutzerklärung</h2>
+                <h2 class="lang-en">Privacy Policy</h2>
+                
+                <div class="info-box">
+                    <p class="lang-de active">Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst.</p>
+                    <p class="lang-en">We take the protection of your personal data very seriously.</p>
                 </div>
-                <h3 class=""lang-de active"">Verantwortlicher</h3>
-                <h3 class=""lang-en"">Controller</h3>
-                <div class=""info-box"">
+
+                <h3 class="lang-de active">Verantwortlicher</h3>
+                <h3 class="lang-en">Controller</h3>
+                <div class="info-box">
                     <p>Botenwirt - Oliver Sprenger<br>
                     Urslaustrasse 29, 5761 Maria Alm / Hinterthal<br>
-                    <span class=""lang-de active"">Telefon:</span><span class=""lang-en"">Phone:</span> 0043 676 6308644<br>
-                    E-Mail: office.botenwirt@gmail.com</p>
+                    <span class="lang-de active">Telefon:</span><span class="lang-en">Phone:</span> +43 676 6308644<br>
+                    E-Mail: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="711e17171812145f131e05141f0618030531161c10181d5f121e1c">[email&#160;protected]</a></p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class=""footer"">
-        <div class=""footer-section lang-de active"">
+    <div class="footer">
+        <div class="footer-section lang-de active">
             <p><strong>Möchten Sie Ihre Hauptspeise teilen?</strong><br>
             Bitte haben Sie Verständnis, dass wir für das zusätzliche Gedeck eine Servicegebühr in Höhe von 5 Euro berechnen.<br>
-            <em>""Kinder bis 14 Jahren ausgenommen""</em></p>
+            <em>"Kinder bis 14 Jahren ausgenommen"</em></p>
         </div>
-        <div class=""footer-section lang-en"">
+        <div class="footer-section lang-en">
             <p><strong>Would you like to share your main course?</strong><br>
             Please understand that we charge a service fee of 5 euros for the additional place setting.<br>
-            <em>""Children under 14 years excluded""</em></p>
+            <em>"Children under 14 years excluded"</em></p>
         </div>
 
-        <div class=""footer-section lang-de active"">
+        <div class="footer-section lang-de active">
             <p>Gerne informieren wir Sie über Unverträglichkeiten oder Allergien.<br>
             Zögern Sie nicht und fragen Sie bei unserem Team nach.</p>
         </div>
-        <div class=""footer-section lang-en"">
+        <div class="footer-section lang-en">
             <p>We are happy to inform you about intolerances or allergies.<br>
             Please don't hesitate to ask our team.</p>
         </div>
 
-        <div class=""footer-section"">
-            <p style=""font-size: 0.85rem; opacity: 0.8;"">
-                <span class=""lang-de active"">Alle Preise inkl. Gesetzlicher MwSt. | Änderungen vorbehalten</span>
-                <span class=""lang-en"">All prices incl. VAT | Subject to change</span>
+        <div class="footer-section">
+            <p style="font-size: 0.85rem; opacity: 0.8;">
+                <span class="lang-de active">Alle Preise inkl. Gesetzlicher MwSt. | Änderungen vorbehalten</span>
+                <span class="lang-en">All prices incl. VAT | Subject to change</span>
             </p>
         </div>
-
-        <div class=""footer-section"">
-            <p style=""margin-top: 1rem; font-size: 0.85rem; opacity: 0.7;"">
+        
+        <div class="footer-section">
+            <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.7;">
                 © 2025 Botenwirt - Alle Rechte vorbehalten
             </p>
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function switchLanguage(lang) {
             document.querySelectorAll('.lang-de, .lang-en, .lang-inline-de, .lang-inline-en').forEach(el => {
                 el.classList.remove('active');
@@ -780,31 +846,15 @@
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            document.querySelector('[data-lang=""' + lang + '""]').classList.add('active');
+            document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
         }
 
         function toggleLegal(id) {
             const content = document.getElementById(id);
             const button = content.previousElementSibling;
+            
             content.classList.toggle('active');
             button.classList.toggle('active');
         }
 
-        window.addEventListener('scroll', function() {
-            const scrollTop = document.querySelector('.scroll-top');
-            if (window.pageYOffset > 300) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
-        });
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    </script>
-</body>
-</html>"
+      
