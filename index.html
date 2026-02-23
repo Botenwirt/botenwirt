@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>~botenwirt~ - Restaurant Hinterthal</title>
+    <title>Botenwirt • Restaurant Hinterthal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,385 +12,515 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --slate: #2d3748;
+            --slate-light: #4a5568;
+            --cream: #f7f5f0;
+            --cream-dark: #e8e5df;
+            --alpine-green: #2f7c6e;
+            --alpine-green-light: #48a393;
+            --gold: #d4af37;
+            --white: #ffffff;
+            --black: #1a1a1a;
+        }
+
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background-color: #ffffff;
-            color: #2c2c2c;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--slate);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Color Palette - Warm Brown Alpine Theme */
-        :root {
-            --primary-brown: #8B4513;
-            --accent-brown: #D2691E;
-            --light-brown: #F5DEB3;
-            --dark-brown: #654321;
-            --black: #2c2c2c;
-            --white: #ffffff;
-        }
-
-        .language-switcher {
+        /* Navigation */
+        .nav {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            border: 2px solid var(--primary-brown);
+            border-bottom: 1px solid rgba(45, 55, 72, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .language-switcher button {
-            background: none;
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s;
-            color: var(--primary-brown);
-            font-weight: bold;
-        }
-
-        .language-switcher button.active {
-            background-color: var(--primary-brown);
-            color: white;
-            border-radius: 20px;
-        }
-
-        .header {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        .logo {
-            font-family: 'Calibri', sans-serif;
-            font-size: 3rem;
-            font-weight: bold;
-            letter-spacing: 0.3em;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-info {
-            margin-top: 1rem;
-            font-size: 0.95rem;
-            opacity: 0.95;
-        }
-
-        .reservation-note {
-            margin-top: 1rem;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--accent-brown);
-        }
-
-        .container {
-            max-width: 1200px;
+        .nav-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        .top-section-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .top-section-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .info-section {
-            background-color: var(--light-brown);
-            padding: 2rem;
-            border-radius: 8px;
-            border: 3px solid var(--primary-brown);
-            height: fit-content;
-        }
-
-        .info-section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark-brown);
-        }
-
-        .info-section p {
-            margin-bottom: 0.5rem;
-            font-size: 1.05rem;
-            color: var(--black);
-        }
-
-        .opening-hours-section {
-            background-color: #f8f6f3;
-            padding: 2rem;
-            border-radius: 8px;
-            border: 2px solid var(--primary-brown);
-            height: fit-content;
-        }
-
-        .opening-hours-section .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-brown);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            letter-spacing: 0.15em;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid var(--primary-brown);
-            font-style: italic;
-            color: var(--black);
-        }
-
-        .hours-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .hours-table td {
-            padding: 0.5rem 1rem;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .hours-table td:first-child {
-            font-weight: bold;
-            width: 40%;
-        }
-
-        .closed-notice {
-            background-color: var(--light-brown);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 3px solid var(--primary-brown);
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--dark-brown);
-            margin-top: 1rem;
-        }
-
-        .events-section {
-            margin-bottom: 2rem;
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .event-box {
-            background-color: var(--light-brown);
-            color: var(--black);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 3px solid var(--primary-brown);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .event-box h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
-            color: var(--dark-brown);
-        }
-
-        .menu-section {
-            margin-bottom: 3rem;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .menu-item {
-            background-color: var(--white);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 2px solid var(--primary-brown);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
-        }
-
-        .menu-item-name {
-            font-size: 1.2rem;
-            font-weight: bold;
-            letter-spacing: 0.08em;
-            margin-bottom: 0.5rem;
-            color: var(--dark-brown);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .menu-item-description {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 0.8rem;
-            line-height: 1.5;
-        }
-
-        .menu-item-price, .inline-prices {
-            font-size: 1.05rem;
-            font-weight: bold;
-            color: var(--black);
-        }
-
-        .icon {
-            font-size: 1.2rem;
-        }
-
-        .legal-section {
-            margin-top: 3rem;
-            border-top: 3px solid var(--primary-brown);
-            padding-top: 2rem;
-        }
-
-        .legal-toggle {
-            background-color: var(--light-brown);
-            color: var(--dark-brown);
-            border: 3px solid var(--primary-brown);
             padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            text-align: left;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            transition: all 0.3s;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .legal-toggle:hover {
-            background-color: var(--primary-brown);
-            color: var(--white);
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--slate);
+            letter-spacing: 0.05em;
         }
 
-        .legal-toggle::after {
-            content: '▼';
-            transition: transform 0.3s;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
         }
 
-        .legal-toggle.active::after {
-            transform: rotate(180deg);
-        }
-
-        .legal-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-            background-color: #f8f6f3;
-            border: 2px solid var(--primary-brown);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .legal-content.active {
-            max-height: 5000px;
-            padding: 2rem;
-        }
-
-        .legal-content h2 {
-            font-size: 1.8rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--dark-brown);
-        }
-
-        .legal-content h2:first-child {
-            margin-top: 0;
-        }
-
-        .legal-content h3 {
-            font-size: 1.3rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary-brown);
-        }
-
-        .legal-content p, .legal-content li {
-            margin-bottom: 1rem;
+        .nav-links a {
+            color: var(--slate);
+            text-decoration: none;
+            font-weight: 500;
             font-size: 0.95rem;
-            line-height: 1.7;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
-        .legal-content ul {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--alpine-green);
+            transition: width 0.3s ease;
         }
 
-        .info-box {
-            background-color: var(--light-brown);
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--cream);
+            padding: 0.5rem;
+            border-radius: 20px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 15px;
+            font-weight: 600;
+            color: var(--slate-light);
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--alpine-green);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            min-height: 600px;
+            background: linear-gradient(135deg, rgba(45, 55, 72, 0.9) 0%, rgba(47, 124, 110, 0.85) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0,300 Q300,150 600,250 T1200,300 L1200,600 L0,600 Z" fill="%23f7f5f0"/></svg>') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--slate);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--slate);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--alpine-green);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--slate-light);
+            font-weight: 300;
+            margin-top: 1.5rem;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(45, 55, 72, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(45, 55, 72, 0.12);
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--alpine-green);
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            color: var(--slate-light);
+            line-height: 1.8;
+        }
+
+        /* Hours Table */
+        .hours-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(45, 55, 72, 0.08);
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 1rem;
+        }
+
+        .hours-table tr {
+            transition: all 0.3s ease;
+        }
+
+        .hours-table tr:hover {
+            transform: translateX(5px);
+        }
+
+        .hours-table td {
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .hours-table td:first-child {
+            font-weight: 600;
+            color: var(--slate);
+            width: 40%;
+        }
+
+        .hours-table td:last-child {
+            color: var(--alpine-green);
+            font-weight: 500;
+        }
+
+        .kitchen-note {
+            text-align: center;
+            margin-top: 2rem;
             padding: 1.5rem;
-            border-left: 4px solid var(--primary-brown);
-            margin: 1.5rem 0;
+            background: linear-gradient(135deg, rgba(47, 124, 110, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border-radius: 15px;
+            font-weight: 600;
+            color: var(--slate);
         }
 
-        .info-box p {
+        /* Events */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: linear-gradient(135deg, var(--alpine-green) 0%, var(--alpine-green-light) 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(47, 124, 110, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(47, 124, 110, 0.4);
+        }
+
+        .event-card:hover::before {
+            top: -30%;
+            right: -30%;
+        }
+
+        .event-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-card p {
+            line-height: 1.8;
+            opacity: 0.95;
+            margin: 0.5rem 0;
+        }
+
+        .event-dates {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            font-weight: 500;
+        }
+
+        /* Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 15px rgba(45, 55, 72, 0.06);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(45, 55, 72, 0.12);
+            border-color: var(--alpine-green);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .menu-item-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--slate);
+            letter-spacing: 0.02em;
+        }
+
+        .menu-item-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--alpine-green);
+            white-space: nowrap;
+        }
+
+        .menu-item-description {
+            color: var(--slate-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
             margin-bottom: 0.5rem;
         }
 
-        .info-box strong {
+        .menu-item-badge {
             display: inline-block;
-            min-width: 150px;
-            color: var(--dark-brown);
+            background: linear-gradient(135deg, rgba(47, 124, 110, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+            color: var(--alpine-green);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
         }
 
-        .footer {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 2rem 1rem;
+        .upgrade-box {
+            background: linear-gradient(135deg, var(--gold) 0%, #e5c45e 100%);
+            color: var(--slate);
+            padding: 2rem;
+            border-radius: 15px;
             text-align: center;
-            margin-top: 3rem;
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+            grid-column: 1 / -1;
         }
 
-        .footer-section {
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            line-height: 1.6;
+        .upgrade-box h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
         }
 
-        .footer a {
-            color: var(--accent-brown);
+        /* Footer */
+        .footer {
+            background: var(--slate);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 6rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
             text-decoration: none;
         }
 
-        .footer a:hover {
-            text-decoration: underline;
-            color: var(--light-brown);
+        .footer-section a:hover {
+            color: var(--gold);
         }
 
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Scroll Top Button */
         .scroll-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--primary-brown);
-            color: var(--white);
-            border: 3px solid var(--dark-brown);
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--alpine-green);
+            color: white;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -397,22 +528,21 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(47, 124, 110, 0.4);
+            transition: all 0.3s ease;
             z-index: 999;
-            transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(139, 69, 19, 0.3);
         }
 
         .scroll-top:hover {
-            background-color: var(--dark-brown);
             transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(139, 69, 19, 0.5);
+            box-shadow: 0 6px 20px rgba(47, 124, 110, 0.5);
         }
 
         .scroll-top.visible {
             display: flex;
         }
 
+        /* Language Toggle */
         .lang-de, .lang-en {
             display: none;
         }
@@ -428,484 +558,580 @@
         .lang-inline-de.active, .lang-inline-en.active {
             display: inline;
         }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--slate);
+            }
+
+            .hero {
+                height: 70vh;
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="language-switcher">
-        <button onclick="switchLanguage('de')" class="lang-btn active" data-lang="de">DE</button>
-        <button onclick="switchLanguage('en')" class="lang-btn" data-lang="en">EN</button>
-    </div>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">~botenwirt~</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#hours">Öffnungszeiten</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#menu">Speisekarte</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li class="lang-switch">
+                    <button class="lang-btn active" onclick="switchLanguage('de')" data-lang="de">DE</button>
+                    <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">EN</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="scroll-top" onclick="scrollToTop()">↑</div>
-
-    <div class="header">
-        <div class="logo">~botenwirt~</div>
-        <div class="contact-info">
-            Urslaustrasse 29 | 5761 Maria Alm / Hinterthal<br>
-            PHONE +43 676 6308644 | MAIL: office.botenwirt @gmail.com </div>
-        <div class="reservation-note lang-de active">Reservierung gerne unter +43 676 6308644</div>
-        <div class="reservation-note lang-en">Reservations at +43 676 6308644</div>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Botenwirt</h1>
+            
+            <div class="hero-meta">
+                <div class="hero-meta-item">📍 Hinterthal, Maria Alm</div>
+                <div class="hero-meta-item">🍽️ Traditional & Modern</div>
+            </div>
+            
+            <a href="tel:+436766308644" class="cta-button lang-de active">Jetzt Reservieren</a>
+            <a href="tel:+436766308644" class="cta-button lang-en">Reserve Now</a>
+        </div>
+    </section>
 
     <div class="container">
-        <div class="top-section-grid">
-            <div class="info-section">
+        <!-- Info Section -->
+        <div class="info-grid">
+            <div class="info-card">
                 <h3 class="lang-de active">📢 Aktuelle Infos</h3>
                 <h3 class="lang-en">📢 Current Info</h3>
                 <p class="lang-de active">Sie haben Unverträglichkeiten oder essen vegan? Rufen Sie uns bitte vorab an und informieren Sie uns – wir bemühen uns, Ihre Wünsche nach Möglichkeit zu berücksichtigen.</p>
                 <p class="lang-en">Do you have intolerances or eat vegan? Please call us in advance and let us know – we will do our best to accommodate your wishes.</p>
             </div>
 
-            <div class="opening-hours-section">
-                <h2 class="section-title lang-de active">ÖFFNUNGSZEITEN</h2>
-                <h2 class="section-title lang-en">OPENING HOURS</h2>
-
-                <div style="background-color: #fff; padding: 1.5rem; border-radius: 8px; border: 2px solid var(--primary-brown);">
-                    <table class="hours-table">
-                        <tr>
-                            <td><span class="lang-de active">Montag</span><span class="lang-en">Monday</span></td>
-                            <td>11:45 - 22:00 Uhr</td>
-                        </tr>
-                        <tr>
-                            <td><span class="lang-de active">Dienstag</span><span class="lang-en">Tuesday</span></td>
-                            <td>11:45 - 22:00 Uhr</td>
-                        </tr>
-                        <tr>
-                            <td><span class="lang-de active">Mittwoch</span><span class="lang-en">Wednesday</span></td>
-                            <td>15:00 - 22:00 Uhr</td>
-                        </tr>
-                        <tr>
-                            <td><span class="lang-de active">Donnerstag</span><span class="lang-en">Thursday</span></td>
-                            <td>11:45 - 22:00 Uhr</td>
-                        </tr>
-                        <tr>
-                            <td><span class="lang-de active">Freitag</span><span class="lang-en">Friday</span></td>
-                            <td>11:45 - 23:00 Uhr</td>
-                        </tr>
-                        <tr>
-                            <td><span class="lang-de active">Samstag</span><span class="lang-en">Saturday</span></td>
-                            <td>11:45 - 23:00 Uhr</td>
-                        </tr>
-                        <tr>
-                            <td><span class="lang-de active">Sonntag</span><span class="lang-en">Sunday</span></td>
-                            <td>11:45 - 22:00 Uhr</td>
-                        </tr>
-                    </table>
-                    <p style="margin-top: 1.5rem; text-align: center; font-size: 1rem; color: var(--dark-brown); font-weight: bold;">
-                        🍳 <span class="lang-de active">Küche täglich bis 21:00 Uhr geöffnet</span>
-                        <span class="lang-en">Kitchen open daily until 9:00 PM</span>
-                    </p>
-                </div>
+            <div class="info-card">
+                <h3>📞 Kontakt</h3>
+                <p><strong>Phone:</strong> <a href="tel:+436766308644" style="color: var(--alpine-green);">+43 676 6308644</a></p>
+                <p><strong>Email:</strong> office.botenwirt @gmail.com</p>
+                <p><strong class="lang-de active">Adresse:</strong><strong class="lang-en">Address:</strong><br>Urslaustrasse 29<br>5761 Maria Alm / Hinterthal</p>
             </div>
         </div>
 
-        <div class="events-section">
-            <h2 class="section-title lang-de active">VERANSTALTUNGEN & ANGEBOTE</h2>
-            <h2 class="section-title lang-en">EVENTS & SPECIALS</h2>
-            
+        <!-- Opening Hours -->
+        <section class="section" id="hours">
+            <div class="section-header">
+                <h2 class="section-title lang-de active">Öffnungszeiten</h2>
+                <h2 class="section-title lang-en">Opening Hours</h2>
+            </div>
+
+            <div class="hours-box">
+                <table class="hours-table">
+                    <tr>
+                        <td><span class="lang-de active">Montag</span><span class="lang-en">Monday</span></td>
+                        <td>11:45 - 22:00</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-de active">Dienstag</span><span class="lang-en">Tuesday</span></td>
+                        <td>11:45 - 22:00</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-de active">Mittwoch</span><span class="lang-en">Wednesday</span></td>
+                        <td>15:00 - 22:00</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-de active">Donnerstag</span><span class="lang-en">Thursday</span></td>
+                        <td>11:45 - 22:00</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-de active">Freitag</span><span class="lang-en">Friday</span></td>
+                        <td>11:45 - 23:00</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-de active">Samstag</span><span class="lang-en">Saturday</span></td>
+                        <td>11:45 - 23:00</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lang-de active">Sonntag</span><span class="lang-en">Sunday</span></td>
+                        <td>11:45 - 22:00</td>
+                    </tr>
+                </table>
+                <div class="kitchen-note">
+                    🍳 <span class="lang-de active">Küche täglich bis 21:00 Uhr geöffnet</span>
+                    <span class="lang-en">Kitchen open daily until 9:00 PM</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events -->
+        <section class="section" id="events">
+            <div class="section-header">
+                <h2 class="section-title lang-de active">Veranstaltungen</h2>
+                <h2 class="section-title lang-en">Events</h2>
+                <p class="section-subtitle lang-de active">Erleben Sie besondere Momente bei uns</p>
+                <p class="section-subtitle lang-en">Experience special moments with us</p>
+            </div>
+
             <div class="events-grid">
-                <div class="event-box">
-                    <h3>🎶 WIRTSHAUSMUSI "DIE SCHAFHUBER BUAM"</h3>
-                    <p style="margin-top: 0.8rem; font-size: 1rem;">Gemütliche Wirtshausmusik</p>
-                    <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.8;">
-                        <strong>📅 Termine 2026:</strong><br>
-                        • Fr 16. Jänner | ab 17:30 Uhr<br>
-                        • Fr 13. Februar | ab 17:30 Uhr<br>
-                        • Fr 20. März | ab 17:30 Uhr
-                    </p>
-                    <p style="margin-top: 1rem; font-style: italic; font-size: 0.9rem;">
-                        Redet miteinader, trinkt miteinander, esst miteinader!
-                    </p>
+                <div class="event-card">
+                    <div class="event-icon">🎶</div>
+                    <h3>Wirtshausmusi<br>"Die Schafhuber Buam"</h3>
+                    <p class="lang-de active">Gemütliche Wirtshausmusik</p>
+                    <p class="lang-en">Cozy tavern music</p>
+                    <div class="event-dates">
+                        <p><strong class="lang-de active">📅 Termine 2026:</strong><strong class="lang-en">📅 Dates 2026:</strong></p>
+                        <p>• Fr 16. Jänner | ab 17:30</p>
+                        <p>• Fr 13. Februar | ab 17:30</p>
+                        <p>• Fr 20. März | ab 17:30</p>
+                    </div>
+                    <p style="margin-top: 1rem; font-style: italic;">Redet miteinader, trinkt miteinander, esst miteinader!</p>
                 </div>
 
-                <div class="event-box">
-                    <h3>🎧 BOTENWIRT SOUND - DJ TONY</h3>
-                    <p style="margin-top: 0.8rem; font-size: 1rem;">Tanzen, Feiern & Genießen</p>
-                    <p style="margin-top: 1rem; font-size: 0.95rem; line-height: 1.8;">
-                        <strong>📅 Termine 2026:</strong><br>
-                        • Mi 21. Jänner | ab 19:00 Uhr<br>
-                        • Mo 16. Februar | ab 19:00 Uhr<br>
-                        • Fr 27. März | ab 19:00 Uhr
-                    </p>
-                    <p style="margin-top: 1rem; font-style: italic; font-size: 0.9rem;">
-                        Redet miteinader, tanzt miteinander, trinkt miteinander!
-                    </p>
+                <div class="event-card">
+                    <div class="event-icon">🎧</div>
+                    <h3>Botenwirt Sound<br>DJ Tony</h3>
+                    <p class="lang-de active">Tanzen, Feiern & Genießen</p>
+                    <p class="lang-en">Dance, celebrate & enjoy</p>
+                    <div class="event-dates">
+                        <p><strong class="lang-de active">📅 Termine 2026:</strong><strong class="lang-en">📅 Dates 2026:</strong></p>
+                        <p>• Mi 21. Jänner | ab 19:00</p>
+                        <p>• Mo 16. Februar | ab 19:00</p>
+                        <p>• Fr 27. März | ab 19:00</p>
+                    </div>
+                    <p style="margin-top: 1rem; font-style: italic;">Redet miteinader, tanzt miteinander, trinkt miteinander!</p>
                 </div>
             </div>
-        </div>
+        </section>
 
+        <!-- Menu Preview -->
+        <section class="section" id="menu">
+            <div class="section-header">
+                <h2 class="section-title lang-de active">Unsere Speisekarte</h2>
+                <h2 class="section-title lang-en">Our Menu</h2>
+                <p class="section-subtitle lang-de active">Regionale Küche trifft moderne Kreationen</p>
+                <p class="section-subtitle lang-en">Regional cuisine meets modern creations</p>
+            </div>
 
-        <!-- SPEISEKARTE -->
-        <div class="menu-section">
-            <h2 class="section-title lang-de active">VORSPEISEN</h2>
-            <h2 class="section-title lang-en">APPETIZERS</h2>
+            <!-- Vorspeisen -->
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 2rem; color: var(--alpine-green);" class="lang-de active">Vorspeisen</h3>
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 2rem; color: var(--alpine-green);" class="lang-en">Appetizers</h3>
             
             <div class="menu-grid">
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">BEEF TATAR</div>
-                    <div class="menu-item-name lang-en">BEEF TARTARE</div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name">Beef Tatar</div>
+                        </div>
+                    </div>
                     <div class="menu-item-description lang-de active">Fein Garniert, Toast & Butter</div>
                     <div class="menu-item-description lang-en">Finely garnished, toast & butter</div>
-                    <div class="inline-prices">Klein €18 | Groß €23</div>
+                    <div class="menu-item-price">Klein €18 | Groß €23</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">GEBACKENE CHAMPIGNON <span class="icon">🥬</span></div>
-                    <div class="menu-item-name lang-en">BAKED MUSHROOMS <span class="icon">🥬</span></div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name">Gebackene Champignon</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                    </div>
                     <div class="menu-item-description lang-de active">Sauce Remoulade, Zitrone</div>
                     <div class="menu-item-description lang-en">Remoulade sauce, lemon</div>
-                    <div class="inline-prices">Klein €14 | Groß €18</div>
+                    <div class="menu-item-price">Klein €14 | Groß €18</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">KRÄFTIGE RINDSUPPE</div>
-                    <div class="menu-item-name lang-en">HEARTY BEEF SOUP</div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name lang-de active">Kräftige Rindsuppe</div>
+                            <div class="menu-item-name lang-en">Hearty Beef Soup</div>
+                        </div>
+                    </div>
                     <div class="menu-item-description lang-de active">Karotten & Suppengrün</div>
                     <div class="menu-item-description lang-en">Carrots & soup vegetables</div>
-                    <div class="inline-prices lang-de active">mit Frittaten €6 | mit Kaspressknödel €8</div>
-                    <div class="inline-prices lang-en">with Frittaten €6 | with cheese dumplings €8</div>
+                    <div class="menu-item-price lang-de active">mit Frittaten €6 | mit Kaspressknödel €8</div>
+                    <div class="menu-item-price lang-en">with Frittaten €6 | with dumplings €8</div>
                 </div>
             </div>
-        </div>
 
-        <div class="menu-section">
-            <h2 class="section-title lang-de active">HAUPTSPEISEN</h2>
-            <h2 class="section-title lang-en">MAIN COURSES</h2>
+            <!-- Hauptspeisen -->
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 2rem; color: var(--alpine-green);" class="lang-de active">Hauptspeisen</h3>
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 2rem; color: var(--alpine-green);" class="lang-en">Main Courses</h3>
             
             <div class="menu-grid">
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">WIENER SCHNITZEL VOM SCHWEIN</div>
-                    <div class="menu-item-name lang-en">WIENER SCHNITZEL (PORK)</div>
-                    <div class="menu-item-description lang-de active">Kartoffelsalat oder Pommes, Preiselbeeren</div>
-                    <div class="menu-item-description lang-en">Potato salad or fries, cranberries</div>
-                    <div class="menu-item-price">€ 19</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Wiener Schnitzel</div>
+                        <div class="menu-item-price">€19</div>
+                    </div>
+                    <div class="menu-item-description lang-de active">vom Schwein, Kartoffelsalat oder Pommes, Preiselbeeren</div>
+                    <div class="menu-item-description lang-en">pork, potato salad or fries, cranberries</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">GEGRILLTE HIRSCH KÄSEKRAINER</div>
-                    <div class="menu-item-name lang-en">GRILLED VENISON CHEESE SAUSAGE</div>
-                    <div class="menu-item-description lang-de active">Gurke, Senf, Kren, Pommes mit Kräutermayo & Röstzwiebel</div>
-                    <div class="menu-item-description lang-en">Cucumber, mustard, horseradish, fries with herb mayo & fried onions</div>
-                    <div class="menu-item-price">€ 19</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name lang-de active">Hirsch Käsekrainer</div>
+                        <div class="menu-item-price">€19</div>
+                    </div>
+                    <div class="menu-item-description lang-de active">Gurke, Senf, Kren, Pommes mit Kräutermayo</div>
+                    <div class="menu-item-description lang-en">Cucumber, mustard, horseradish, fries with herb mayo</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">TOSKANISCHES HUHN</div>
-                    <div class="menu-item-name lang-en">TUSCAN CHICKEN</div>
-                    <div class="menu-item-description lang-de active">Rosmarin Rahmsauce, Tomaten, frischer Spinat, Polenta</div>
-                    <div class="menu-item-description lang-en">Rosemary cream sauce, tomatoes, fresh spinach, polenta</div>
-                    <div class="menu-item-price">€ 23</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name lang-de active">Toskanisches Huhn</div>
+                        <div class="menu-item-price">€23</div>
+                    </div>
+                    <div class="menu-item-description lang-de active">Rosmarin Rahmsauce, Tomaten, Spinat, Polenta</div>
+                    <div class="menu-item-description lang-en">Rosemary cream sauce, tomatoes, spinach, polenta</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">RUMPSTEAK "BTW STYLE"</div>
-                    <div class="menu-item-name lang-en">RUMP STEAK "BTW STYLE"</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Rumpsteak "BTW Style"</div>
+                        <div class="menu-item-price">€35</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Trüffel Jus, gegrillter Spitzpaprika, Pommes</div>
-                    <div class="menu-item-description lang-en">Truffle jus, grilled pointed pepper, fries</div>
-                    <div class="menu-item-price">€ 35</div>
+                    <div class="menu-item-description lang-en">Truffle jus, grilled pepper, fries</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">PASTA MIT TRÜFFELRAHM <span class="icon">🥬</span></div>
-                    <div class="menu-item-name lang-en">PASTA WITH TRUFFLE CREAM <span class="icon">🥬</span></div>
-                    <div class="menu-item-description lang-de active">Parmesan</div>
-                    <div class="menu-item-description lang-en">Parmesan</div>
-                    <div class="menu-item-price">€ 19</div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name lang-de active">Pasta mit Trüffelrahm</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€19</div>
+                    </div>
+                    <div class="menu-item-description">Parmesan</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">PINZGAUER KASNOCKEN <span class="icon">🥬</span></div>
-                    <div class="menu-item-name lang-en">PINZGAU CHEESE DUMPLINGS <span class="icon">🥬</span></div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name">Pinzgauer Kasnocken</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€18</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Röstzwiebel, gehackte Kräuter, Salat</div>
                     <div class="menu-item-description lang-en">Fried onions, chopped herbs, salad</div>
-                    <div class="menu-item-price">€ 18</div>
                 </div>
 
-                <div class="menu-item" style="background-color: var(--light-brown); border: 3px solid var(--primary-brown);">
-                    <div class="menu-item-name" style="font-size: 1.1rem;">⭐ STEAK & PASTA UPGRADE</div>
-                    <div class="menu-item-description lang-de active">+ 3 Stück Riesengarnelen</div>
-                    <div class="menu-item-description lang-en">+ 3 pieces giant shrimp</div>
-                    <div class="menu-item-price">€ 10</div>
+                <div class="upgrade-box">
+                    <h4>⭐ UPGRADE YOUR DISH</h4>
+                    <p class="lang-de active">+ 3 Stück Riesengarnelen für nur €10</p>
+                    <p class="lang-en">+ 3 giant shrimp for only €10</p>
                 </div>
             </div>
-        </div>
+            </div>
 
-        <div class="menu-section">
-            <h2 class="section-title">SALATE & POKE BOWL</h2>
+            <!-- Salate & Poke Bowl -->
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 2rem; color: var(--alpine-green);">SALATE & POKE BOWL</h3>
             
             <div class="menu-grid">
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">BACKHENDEL-SALAT</div>
-                    <div class="menu-item-name lang-en">FRIED CHICKEN SALAD</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name lang-de active">Backhendel-Salat</div>
+                        <div class="menu-item-name lang-en">Fried Chicken Salad</div>
+                        <div class="menu-item-price">€21</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Blattsalat, Rohkost, Preiselbeer Dressing</div>
                     <div class="menu-item-description lang-en">Leaf salad, raw vegetables, cranberry dressing</div>
-                    <div class="menu-item-price">€ 21</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">KASPRESSKNÖDEL-SALAT <span class="icon">🥬</span></div>
-                    <div class="menu-item-name lang-en">CHEESE DUMPLING SALAD <span class="icon">🥬</span></div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name lang-de active">Kaspressknödel-Salat</div>
+                            <div class="menu-item-name lang-en">Cheese Dumpling Salad</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€18</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Blattsalat, Rohkost, Kräuter Mayo, Dressing</div>
                     <div class="menu-item-description lang-en">Leaf salad, raw vegetables, herb mayo, dressing</div>
-                    <div class="menu-item-price">€ 18</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name">POKE BOWL "BOTENWIRT STYLE"</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Poke Bowl "Botenwirt Style"</div>
+                        <div class="menu-item-price">€23</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Sushireis, Gurke, Tomate, Radi, Sesam, Röstzwiebel, Poke Sauce, TUNA</div>
                     <div class="menu-item-description lang-en">Sushi rice, cucumber, tomato, radish, sesame, fried onions, poke sauce, TUNA</div>
-                    <div class="menu-item-price">€ 23</div>
                 </div>
             </div>
-        </div>
 
-        <div class="menu-section">
-            <h2 class="section-title">BURGER MENU</h2>
+            <!-- Pizza Classic -->
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 2rem; color: var(--alpine-green);">PIZZA CLASSIC</h3>
             
             <div class="menu-grid">
                 <div class="menu-item">
-                    <div class="menu-item-name">BURGER "BTW"</div>
-                    <div class="menu-item-description lang-de active">100% Pinzgau Beef | Gurke | Tomate | Cheddar | Zwiebel | Salat | Burger Sauce | Pommes</div>
-                    <div class="menu-item-description lang-en">100% Pinzgau beef | cucumber | tomato | cheddar | onion | salad | burger sauce | fries</div>
-                    <div class="menu-item-price">€ 21</div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-name">BBQ-BURGER "BTW"</div>
-                    <div class="menu-item-description lang-de active">100% Pinzgau Beef | Speck | Cheddar | Tomate | Röstzwiebel | Salat | BBQ-Sauce | Pommes</div>
-                    <div class="menu-item-description lang-en">100% Pinzgau beef | bacon | cheddar | tomato | fried onions | salad | BBQ sauce | fries</div>
-                    <div class="menu-item-price">€ 21</div>
-                </div>
-
-                <div class="menu-item">
-                    <div class="menu-item-name">CHICKEN BURGER "BTW"</div>
-                    <div class="menu-item-description lang-de active">Knuspriges Hendl | Gurke | Tomate | Zwiebel | Salat | Burger Sauce | Pommes</div>
-                    <div class="menu-item-description lang-en">Crispy chicken | cucumber | tomato | onion | salad | burger sauce | fries</div>
-                    <div class="menu-item-price">€ 21</div>
-                </div>
-
-                <div class="menu-item" style="background-color: var(--light-brown); border: 3px solid var(--primary-brown);">
-                    <div class="menu-item-name" style="font-size: 1.1rem;">⭐ BURGER UPGRADE</div>
-                    <div class="menu-item-description lang-de active">+ 3 Stück gebratene Garnelen</div>
-                    <div class="menu-item-description lang-en">+ 3 pieces grilled shrimp</div>
-                    <div class="menu-item-price">€ 10</div>
-                </div>
-            </div>
-
-            <div class="info-box" style="margin-top: 1.5rem;">
-                <p class="lang-de active"><strong>💡 Gerne bereiten wir auch alle Burger Vegetarisch oder Vegan (mit Falafel, Veganem Käse) für Sie zu. Sagen Sie einfach unserem Service bescheid!</strong></p>
-                <p class="lang-en"><strong>💡 We are happy to prepare all burgers vegetarian or vegan (with falafel, vegan cheese) for you. Just let our service know!</strong></p>
-            </div>
-        </div>
-
-        <div class="menu-section">
-            <h2 class="section-title">PIZZA CLASSIC</h2>
-            
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-name">MARGHERITA <span class="icon">🥬</span></div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name">MARGHERITA</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€12</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Oregano</div>
                     <div class="menu-item-description lang-en">Tomato ragout, mozzarella, oregano</div>
-                    <div class="menu-item-price">€ 12</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name">PIZZA SALAMI</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">PIZZA SALAMI</div>
+                        <div class="menu-item-price">€15</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Italienische Salami, Oregano</div>
                     <div class="menu-item-description lang-en">Tomato ragout, mozzarella, Italian salami, oregano</div>
-                    <div class="menu-item-price">€ 15</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">PIZZA SCHINKEN</div>
-                    <div class="menu-item-name lang-en">PIZZA HAM</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name lang-de active">PIZZA SCHINKEN</div>
+                        <div class="menu-item-name lang-en">PIZZA HAM</div>
+                        <div class="menu-item-price">€15</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, gekochter Schinken, Oregano</div>
                     <div class="menu-item-description lang-en">Tomato ragout, mozzarella, cooked ham, oregano</div>
-                    <div class="menu-item-price">€ 15</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name">PIZZA DIAVOLO</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">PIZZA DIAVOLO</div>
+                        <div class="menu-item-price">€16</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Italienische Salami, scharfe Pfefferoni, Oregano</div>
                     <div class="menu-item-description lang-en">Tomato ragout, mozzarella, Italian salami, hot pepperoni, oregano</div>
-                    <div class="menu-item-price">€ 16</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name">PIZZA TONNO</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">PIZZA TONNO</div>
+                        <div class="menu-item-price">€17</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Tonno, Zwiebel, Oliven, Knoblauch, Oregano</div>
                     <div class="menu-item-description lang-en">Tomato ragout, mozzarella, tuna, onion, olives, garlic, oregano</div>
-                    <div class="menu-item-price">€ 17</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name">PIZZA HAWAII</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">PIZZA HAWAII</div>
+                        <div class="menu-item-price">€16</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, gekochter Schinken, Ananas, Oregano</div>
                     <div class="menu-item-description lang-en">Tomato ragout, mozzarella, cooked ham, pineapple, oregano</div>
-                    <div class="menu-item-price">€ 16</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name">PIZZA FUNGHI <span class="icon">🥬</span></div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name">PIZZA FUNGHI</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€15</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Pilzgeschnetzeltes, Mozzarella, Knoblauch, Oregano</div>
                     <div class="menu-item-description lang-en">Sliced mushrooms, mozzarella, garlic, oregano</div>
-                    <div class="menu-item-price">€ 15</div>
                 </div>
             </div>
-        </div>
 
-        <div class="menu-section">
-            <h2 class="section-title">PIZZA "BOTENWIRT" SPEZIALE</h2>
+            <!-- Pizza Speziale -->
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 2rem; color: var(--alpine-green);">PIZZA "BOTENWIRT" SPEZIALE</h3>
             
             <div class="menu-grid">
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">HAUS-PIZZA</div>
-                    <div class="menu-item-name lang-en">HOUSE PIZZA</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name lang-de active">HAUS-PIZZA</div>
+                        <div class="menu-item-name lang-en">HOUSE PIZZA</div>
+                        <div class="menu-item-price">€17</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Salami, Schinken, Pilzgeschnetzeltes, Rucola, Balsamico Glace, Parmesan</div>
-                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, salami, ham, sliced mushrooms, arugula, balsamic glaze, parmesan</div>
-                    <div class="menu-item-price">€ 17</div>
+                    <div class="menu-item-description lang-en">Tomato ragout, mozzarella, salami, ham, mushrooms, arugula, balsamic glaze, parmesan</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name">PIZZA "TONY" CALZONE</div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">PIZZA "TONY" CALZONE</div>
+                        <div class="menu-item-price">€17</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Tomatenragout, Mozzarella, Schinken, Tonno, Zwiebel, Pilze</div>
                     <div class="menu-item-description lang-en">Tomato ragout, mozzarella, ham, tuna, onion, mushrooms</div>
-                    <div class="menu-item-price">€ 17</div>
                 </div>
             </div>
-        </div>
 
-        <div class="menu-section">
-            <h2 class="section-title">EXTRAS</h2>
+            <!-- Extras -->
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 3rem 0 2rem; color: var(--alpine-green);">EXTRAS</h3>
             
             <div class="menu-grid">
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">PORTION POMMES <span class="icon">🥬</span></div>
-                    <div class="menu-item-name lang-en">PORTION FRIES <span class="icon">🥬</span></div>
-                    <div class="menu-item-price">€ 8</div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name lang-de active">Portion Pommes</div>
+                            <div class="menu-item-name lang-en">Portion Fries</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€8</div>
+                    </div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">POMMES MIT KRÄUTER MAYO <span class="icon">🥬</span></div>
-                    <div class="menu-item-name lang-en">FRIES WITH HERB MAYO <span class="icon">🥬</span></div>
-                    <div class="menu-item-price">€ 9</div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name lang-de active">Pommes mit Kräuter Mayo</div>
+                            <div class="menu-item-name lang-en">Fries with Herb Mayo</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€9</div>
+                    </div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">TRÜFFELPOMMES MIT PARMESAN <span class="icon">🥬</span></div>
-                    <div class="menu-item-name lang-en">TRUFFLE FRIES WITH PARMESAN <span class="icon">🥬</span></div>
-                    <div class="menu-item-price">€ 10</div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name lang-de active">Trüffelpommes mit Parmesan</div>
+                            <div class="menu-item-name lang-en">Truffle Fries with Parmesan</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€10</div>
+                    </div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">GEBRATENE GRÜNE BOHNEN <span class="icon">🥬</span></div>
-                    <div class="menu-item-name lang-en">FRIED GREEN BEANS <span class="icon">🥬</span></div>
-                    <div class="menu-item-price">€ 5</div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name lang-de active">Gebratene grüne Bohnen</div>
+                            <div class="menu-item-name lang-en">Fried Green Beans</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€5</div>
+                    </div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">GEMISCHTER SALAT <span class="icon">🥬</span></div>
-                    <div class="menu-item-name lang-en">MIXED SALAD <span class="icon">🥬</span></div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name lang-de active">Gemischter Salat</div>
+                            <div class="menu-item-name lang-en">Mixed Salad</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€7</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Blattsalate, Rohkost, Hausdressing</div>
                     <div class="menu-item-description lang-en">Leaf salads, raw vegetables, house dressing</div>
-                    <div class="menu-item-price">€ 7</div>
                 </div>
 
                 <div class="menu-item">
-                    <div class="menu-item-name lang-de active">TOMATENSALAT & RUCOLA <span class="icon">🥬</span></div>
-                    <div class="menu-item-name lang-en">TOMATO SALAD & ARUGULA <span class="icon">🥬</span></div>
+                    <div class="menu-item-header">
+                        <div>
+                            <div class="menu-item-name lang-de active">Tomatensalat & Rucola</div>
+                            <div class="menu-item-name lang-en">Tomato Salad & Arugula</div>
+                            <span class="menu-item-badge">🥬 Vegetarisch</span>
+                        </div>
+                        <div class="menu-item-price">€7</div>
+                    </div>
                     <div class="menu-item-description lang-de active">Balsamico Glace, Zwiebel</div>
                     <div class="menu-item-description lang-en">Balsamic glaze, onion</div>
-                    <div class="menu-item-price">€ 7</div>
                 </div>
             </div>
-        </div>
-
-        <!-- LEGAL SECTIONS -->
-        <div class="legal-section">
-            <button class="legal-toggle" onclick="toggleLegal('impressum')">
-                <span class="lang-de active">📋 Impressum</span>
-                <span class="lang-en">📋 Legal Notice</span>
-            </button>
-            <div id="impressum" class="legal-content">
-                <h2 class="lang-de active">Impressum</h2>
-                <h2 class="lang-en">Legal Notice</h2>
-                
-                <div class="info-box">
-                    <p><strong>Botenwirt</strong><br>
-                    Oliver Sprenger<br>
-                    Urslaustrasse 29<br>
-                    5761 Maria Alm / Hinterthal<br>
-                    Österreich</p>
-                    <p><strong class="lang-de active">Telefon:</strong><strong class="lang-en">Phone:</strong> +43 676 6308644<br>
-                    <strong>E-Mail:</strong> office.botenwirt @gmail.com<br>
-                    <strong>UID:</strong> ATU76115213</p>
-                </div>
-            </div>
-
-            <button class="legal-toggle" onclick="toggleLegal('datenschutz')">
-                <span class="lang-de active">🔒 Datenschutzerklärung</span>
-                <span class="lang-en">🔒 Privacy Policy</span>
-            </button>
-            <div id="datenschutz" class="legal-content">
-                <h2 class="lang-de active">Datenschutzerklärung</h2>
-                <h2 class="lang-en">Privacy Policy</h2>
-                
-                <div class="info-box">
-                    <p class="lang-de active">Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst.</p>
-                    <p class="lang-en">We take the protection of your personal data very seriously.</p>
-                </div>
-
-                <h3 class="lang-de active">Verantwortlicher</h3>
-                <h3 class="lang-en">Controller</h3>
-                <div class="info-box">
-                    <p>Botenwirt - Oliver Sprenger<br>
-                    Urslaustrasse 29, 5761 Maria Alm / Hinterthal<br>
-                    <span class="lang-de active">Telefon:</span><span class="lang-en">Phone:</span> +43 676 6308644<br>
-                    E-Mail: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="38575e5e515b5d165a574c5d564f514a4c785f55595154165b5755">[email&#160;protected]</a></p>
-                </div>
-            </div>
-        </div>
+        </section>
     </div>
 
-    <div class="footer">
-        <div class="footer-section lang-de active">
-            <p><strong>Möchten Sie Ihre Hauptspeise teilen?</strong><br>
-            Wir freuen uns, wenn Sie unsere Speisen gemeinsam genießen möchten. Für das zusätzliche Gedeck, sowie unseren Service berechnen wir 5,00 € Servicepauschale.<br>
-            <em>Kinder bis einschließlich 14 Jahre sind von dieser Gebühr selbstverständlich ausgenommen. Vielen Dank für Ihr Verständnis!</em></p>
-            <p style="margin-top: 1rem;"><strong>Take-Away:</strong> Für unser Take-away-Geschirr berechnen wir einen Unkostenbeitrag von 1,00 €.</p>
-        </div>
-        <div class="footer-section lang-en">
-            <p><strong>Would you like to share your main course?</strong><br>
-            We are happy if you would like to enjoy our dishes together. We charge 5.00 € service fee for the additional place setting and our service.<br>
-            <em>Children up to and including 14 years are of course exempt from this fee. Thank you for your understanding!</em></p>
-            <p style="margin-top: 1rem;"><strong>Take-Away:</strong> We charge 1.00 € for our take-away containers.</p>
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Botenwirt</h4>
+                <p class="lang-de active">Restaurant in Hinterthal</p>
+                <p class="lang-en">Restaurant in Hinterthal</p>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="lang-de active">Kontakt</h4>
+                <h4 class="lang-en">Contact</h4>
+                <p>Urslaustrasse 29<br>5761 Maria Alm / Hinterthal</p>
+                <p>Phone: <a href="tel:+436766308644">+43 676 6308644</a></p>
+                <p>Email: office.botenwirt @gmail.com</p>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="lang-de active">Öffnungszeiten</h4>
+                <h4 class="lang-en">Hours</h4>
+                <p>Mo, Di, Do-So: 11:45-22:00</p>
+                <p class="lang-de active">Mittwoch: 15:00-22:00</p>
+                <p class="lang-en">Wednesday: 15:00-22:00</p>
+                <p>Fr-Sa: 11:45-23:00</p>
+                <p class="lang-de active"><br>Küche bis 21:00 Uhr</p>
+                <p class="lang-en"><br>Kitchen until 9:00 PM</p>
+            </div>
         </div>
 
-        <div class="footer-section lang-de active">
-            <p>Gerne informieren wir Sie über Unverträglichkeiten oder Allergien.<br>
-            Zögern Sie nicht und fragen Sie bei unserem Team nach.</p>
-        </div>
-        <div class="footer-section lang-en">
-            <p>We are happy to inform you about intolerances or allergies.<br>
-            Please don't hesitate to ask our team.</p>
-        </div>
-
-        <div class="footer-section">
-            <p style="font-size: 0.85rem; opacity: 0.8;">
-                <span class="lang-de active">Alle Preise inkl. Gesetzlicher MwSt. | Änderungen vorbehalten</span>
-                <span class="lang-en">All prices incl. VAT | Subject to change</span>
+        <div class="footer-bottom">
+            <p>© 2026 Botenwirt - Alle Rechte vorbehalten</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;" class="lang-de active">
+                Möchten Sie Ihre Hauptspeise teilen? Servicepauschale: 5,00 € (Kinder bis 14 Jahre ausgenommen)<br>
+                Take-Away Geschirr: 1,00 € | Alle Preise inkl. MwSt.
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;" class="lang-en">
+                Share your main course? Service fee: 5.00 € (children up to 14 years exempt)<br>
+                Take-away containers: 1.00 € | All prices incl. VAT
             </p>
         </div>
-        
-        <div class="footer-section">
-            <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.7;">
-                © 2025 Botenwirt - Alle Rechte vorbehalten
-            </p>
-        </div>
-    </div>
+    </footer>
 
-    <script>
+    <!-- Scroll Top Button -->
+    <div class="scroll-top" onclick="scrollToTop()">↑</div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         function switchLanguage(lang) {
             document.querySelectorAll('.lang-de, .lang-en, .lang-inline-de, .lang-inline-en').forEach(el => {
                 el.classList.remove('active');
@@ -919,12 +1145,8 @@
             document.querySelector('[data-lang="' + lang + '"]').classList.add('active');
         }
 
-        function toggleLegal(id) {
-            const content = document.getElementById(id);
-            const button = content.previousElementSibling;
-            
-            content.classList.toggle('active');
-            button.classList.toggle('active');
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
         }
 
         window.addEventListener('scroll', function() {
@@ -937,11 +1159,4 @@
         });
 
         function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    </script>
-</body>
-</html>
+            window
